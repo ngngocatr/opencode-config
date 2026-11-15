@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@json9512/opm": "^1.1.0",
+    "@opencode-ai/plugin": "1.19.3",
+    "@opentui/core": "^0.6.6",
+    "@opentui/solid": "^0.6.6",
+    "opencode-antigravity-auth": "1.6.0",
+    "opencode-headroom": "^0.1.0",
+    "opencode-subagent-control": "^1.0.3",
+    "solid-js": "^1.9.12"
+  }
+}

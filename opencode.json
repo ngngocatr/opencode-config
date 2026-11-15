@@ -1,0 +1,70 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "google/gemini-3.1-pro-preview",
+  "autoupdate": false,
+  "default_agent": "chat",
+  "lsp": false,
+  "permission": {
+    "cloakbrowser_*": "deny"
+  },
+  "plugin": [
+    "@json9512/opm",
+    "file://{env:HOME}/.config/opencode/plugins/quota",
+    "file://{env:HOME}/.config/opencode/plugins/opensploit-wrapper.js",
+    "file://{env:HOME}/.config/opencode/plugins/pentest-instructions.js",
+    "file://{env:HOME}/.config/opencode/plugins/caveman/plugin.js",
+    "file://{env:HOME}/.config/opencode/plugins/opencode-vilao-provider/dist/server.js",
+    ["opencode-headroom", { "verbose": true, "real_time": true }],
+    ["opencode-eyesight", {
+      "model": "google/gemini-3.5-flash"
+    }]
+  ],
+  "mcp": {
+    "codegraph": {
+      "type": "local",
+      "command": [
+        "codegraph",
+        "serve",
+        "--mcp"
+      ],
+      "enabled": true
+    },
+    "cloakbrowser": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "cloakbrowser-mcp@latest"
+      ],
+      "enabled": false,
+      "timeout": 300000,
+      "environment": {
+        "PLAYWRIGHT_MCP_HEADLESS": "false",
+        "PLAYWRIGHT_MCP_OUTPUT_DIR": "/tmp/cloakbrowser-artifacts"
+      }
+    },
+    "burp": {
+      "type": "remote",
+      "url": "http://127.0.0.1:9876/",
+      "enabled": true,
+      "timeout": 30000
+    },
+    "github": {
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "enabled": true,
+      "oauth": false,
+      "headers": {
+        "Authorization": "Bearer {env:GITHUB_PERSONAL_ACCESS_TOKEN}",
+        "X-MCP-Toolsets": "context,repos,issues,pull_requests,users"
+      }
+    }
+  },
+  "provider": {
+    "openai": {},
+    "vilao": {},
+    "google": {
+      "npm": "@ai-sdk/google"
+    }
+  }
+}

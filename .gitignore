@@ -1,0 +1,59 @@
+# Chỉ theo dõi cấu hình OpenCode đã duyệt.
+*
+!.gitignore
+!.env.example
+!.secretlintignore
+!README.md
+!LICENSE
+!AGENTS.md
+!opencode.json
+!tui.json
+!package.json
+!package-lock.json
+!bun.lock
+!opencode-skills-sidebar/
+!opencode-skills-sidebar/**
+!agents/
+!agents/**
+!instructions/
+!instructions/**
+!skills/
+!skills/**
+!plugins/
+!plugins/**
+
+# Secret, thông tin xác thực và dữ liệu máy cục bộ.
+.env
+.env.*
+!.env.example
+service.json
+auth.json
+credentials*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Cache, log, backup và dependency sinh lại được.
+node_modules/
+**/node_modules/
+.cache/
+**/.cache/
+*.log
+*.jsonl
+*.bak
+*.bak-*
+*.backup*
+skills_backup_*/
+.caveman-active
+.opencode/
+
+# Repo phụ được cài riêng theo README, không nhúng Git repo lồng nhau.
+opensploit-plugin/
+plugins/opencode-vilao-provider/
+opencode-quota/
+skills/ctf-skills/tests/
+
+# File hỗ trợ cục bộ không thuộc cấu hình đồng bộ.
+burp-mcp-bridge.py
+plugins-disabled.json
